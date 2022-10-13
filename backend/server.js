@@ -2,10 +2,15 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 const connection = require('./connection.js');
+const Model = require('./models/Bookings');
+const data = require('./bookingData');
+
+//const importData = require('./bookingData')
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
 
 app.listen(5000, () => {
 

@@ -15,8 +15,11 @@ const BookingSchema = new mongoose.Schema({
         timestamps: true
     },
 
-    price:{
+     cost:{
         type:Number,
         required:true
     }
 })
+
+const Bookings = mongoose.model('Bookings', BookingSchema)
+module.exports = Bookings;
