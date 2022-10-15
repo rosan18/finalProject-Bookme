@@ -5,7 +5,7 @@ class Homepage extends Component {
     render() {
         return (
             <div className='home'>
-                <img src='nordwood-themes-kRNZiGKtz48-unsplash.jpg'/>
+                <img src={require('./Image/home_img.jpg')} height={200} width={200}/>
             </div>
         );
     }

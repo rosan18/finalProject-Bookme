@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
-app.use(express.json());
+
+const cors = require('cors');
+
 const connection = require('./connection.js');
-const Model = require('./models/Bookings');
-const data = require('./bookingData');
+
 
 //const importData = require('./bookingData')
-
+app.use(express.json());
+app.use(cors());
+//handle routes
+app.use('/api', require('./routes/api/bookings'))
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

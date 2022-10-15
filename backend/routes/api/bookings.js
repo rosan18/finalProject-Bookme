@@ -32,8 +32,9 @@ router.get('/', async (req, res) => {
 //@route GET by /:id
 router.get('/:id', async (req, res) => {
     try {
-      const bookings= await Bookings.findById(req.params);
+      const bookings= await Bookings.findById(req.params.id);
       console.log(bookings)
+      res.send(bookings)
     } catch (error) {
       console.error(error);
         res.status(500).json({message:"server failed"})
@@ -43,11 +44,11 @@ router.get('/:id', async (req, res) => {
     //@route POST 
     router.post('/', async (req, res) => {
        try {
-        const exercise = await Bookings.create(req.body);
-         console.log(exercise)
+        const bookings = await Bookings.create(req.body);
+         res.send(bookings)
         
        } catch (error) {
-        
+        console.log(error)
          res.status(500).json({message:"failed to create appointment"})
     
        } 
@@ -56,8 +57,9 @@ router.get('/:id', async (req, res) => {
     //@route PUT
     router.put('/:id', async (req,res) => {
       try {
-        const bookings = await Bookings.findById(req.params.id, req.body);
+        const bookings = await Bookings.findByIdAndUpdate(req.params.id, req.body);
          console.log(bookings)
+         res.send(bookings)
       } catch (error) {
         res.status(500).json({message:"unable to update"})
       }
@@ -75,5 +77,5 @@ router.get('/:id', async (req, res) => {
     })
     
     
-      module.export = router;
+      module.exports = router;
     
