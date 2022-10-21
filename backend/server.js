@@ -5,11 +5,10 @@ const cors = require('cors');
 
 const connection = require('./connection.js');
 
-
-//const importData = require('./bookingData')
 app.use(express.json());
 app.use(cors());
-//handle routes
+//handle routes and test on post man
+
 app.use('/api', require('./routes/api/bookings'))
 app.get('/', (req, res) => {
   res.send('Hello World!')

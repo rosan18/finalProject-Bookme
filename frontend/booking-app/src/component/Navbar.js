@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Homepage from './Homepage';
+import { Link } from 'react-router-dom';
+
 
 class Navbar extends Component {
     state = {
+        
 
     }
     render() {
@@ -17,8 +19,9 @@ class Navbar extends Component {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href='./Homepage'>Home</a>
-                                    
+                                   {/*
+                                    <a class="nav-link active" aria-current="page">Home</a>*/}
+                                     <Link to='/Navbar'class="nav-link active"  >Home</Link>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="">link</a>
@@ -28,7 +31,8 @@ class Navbar extends Component {
                                         Services
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Finance</a></li>
+                                        {/*<li><a class="dropdown-item" href="#">Finance</a></li>*/}
+                                        <Link to='/Finance'class="dropdown-item">Finance</Link>
                                         <li><a class="dropdown-item" href="">Health</a></li>
                                         <li><hr class="dropdown-divider"/></li>
                                         <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -40,9 +44,13 @@ class Navbar extends Component {
                                 
                                     <button class="btn btn-light" type="submit">Log In</button>
                             </form>
+
                         </div>
                     </div>
                 </nav>
+                <div className='home'>
+                <img src={require('./Image/home_img.jpg')}class="img-fluid" alt="..." />
+            </div>
             </div>
         );
     }
