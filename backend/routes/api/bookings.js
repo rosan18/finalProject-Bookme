@@ -44,6 +44,7 @@ router.get('/:id', async (req, res) => {
     //@route POST 
     router.post('/', async (req, res) => {
        try {
+        console.log(req.body)
         const bookings = await Bookings.create(req.body);
          res.send(bookings)
         

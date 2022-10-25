@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const BookingSchema = new mongoose.Schema({
     name:{
       type: String,
-      required:true
+      
     },
     service:{
         type: String,
-        required:true
+       
     },
     date:{
         type:Date,
@@ -17,7 +17,7 @@ const BookingSchema = new mongoose.Schema({
 
      cost:{
         type:Number,
-        required:true
+        
     }
 })
 
