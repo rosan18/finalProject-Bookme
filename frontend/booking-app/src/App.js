@@ -4,19 +4,18 @@ import '../src/component/Navbar'
 import Navbar from '../src/component/Navbar';
 import Finance from "./component/Services/Finance ";
 import Form from "./component/Form";
+import Homepage from "./component/Homepage";
 
 function App() {
   return (
     <BrowserRouter>
-    
-
+    <Navbar />
     <Routes>
-  
-    <Route path="/" element={<Navbar/>}/>
-      <Route path="/Finance" element={<Finance/>}/>
-      <Route path="/Form" element={<Form/>}/>
+      <Route path="/" element={<Homepage/>} />
+      <Route path="/Finance" element={<Finance />} />
+      <Route path="/Form" element={<Form />} />
     </Routes>
-    </BrowserRouter>
+  </BrowserRouter>
   ) 
 } 
 

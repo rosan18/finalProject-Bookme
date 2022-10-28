@@ -10,7 +10,7 @@ class Navbar extends Component {
     render() {
         return (
             <div>
-                <nav class="navbar navbar-expand-lg navbar navbar-light bg-primary">
+                <nav class="navbar navbar-expand-lg navbar navbar-light ">
                     <div class="container-fluid">
                         <h1 class="navbar-brand" href="#">Book me!</h1>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@ class Navbar extends Component {
                                 <li class="nav-item">
                                    {/*
                                     <a class="nav-link active" aria-current="page">Home</a>*/}
-                                     <Link to='/Navbar'class="nav-link active"  >Home</Link>
+                                     <Link to='/'class="nav-link active"  >Home</Link>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="">link</a>
@@ -32,10 +32,10 @@ class Navbar extends Component {
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {/*<li><a class="dropdown-item" href="#">Finance</a></li>*/}
-                                        <Link to='/Finance'class="dropdown-item">Finance</Link>
+                                        <Link to='/Finance'class="dropdown-item">Finance
                                         <li><a class="dropdown-item" href="">Health</a></li>
-                                        <li><hr class="dropdown-divider"/></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                       
+                                        </Link>
                                     </ul>
                                 </li>
                                
@@ -48,9 +48,7 @@ class Navbar extends Component {
                         </div>
                     </div>
                 </nav>
-                <div className='home'>
-                <img src={require('./Image/home_img.jpg')}class="img-fluid" alt="..." />
-            </div>
+                
             </div>
         );
     }
