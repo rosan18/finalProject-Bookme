@@ -7,9 +7,11 @@ const connection = require('./connection.js');
 
 app.use(express.json());
 app.use(cors());
+
 //handle routes and test on post man
 
 app.use('/api', require('./routes/api/bookings'))
+app.use('/api', require('./routes/api/ConfirmBooking'))
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

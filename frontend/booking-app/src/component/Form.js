@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { Link } from 'react-router-dom';
 
 
 
 class Form extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handleChange = this.handleChange.bind(this);
-
+        this.handleDateChange = this.handleDateChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
 
 
@@ -28,17 +29,23 @@ class Form extends Component {
 
     }
 
-    //event to handle all inputs
+    //event to handle all inputs except datepicker
     handleChange(e) {
 
         const name = e.target.name;
         const value = e.target.value;
-        //to update the state
+        //to update the input state
 
         this.setState({ [name]: value });
 
     }
-
+//event to handle datepicker input
+    handleDateChange(date) {
+        //update the date state
+        this.setState({
+            date:date
+        })
+    }
 
 
     handleSubmit(e) {
@@ -74,12 +81,16 @@ class Form extends Component {
                     <input name='service' type="text" className="form-control " id="exampleFormControlInput1" value={this.state.service} onChange={this.handleChange} />
 
                     <label className="form-label"> Date</label>
-                    <DatePicker 
-                   name='date'
-                   selected={this.state.date}
-                   onChange={date=>this.handleChange(date)}>
+                  <div>
+                  <DatePicker
+                  
+                  selected={this.state.date}
+                  onChange={this.handleDateChange}
+                  name='date'
+                  />
+        </div>
 
-             </DatePicker>
+             
 
 
                    {/* <label className="form-label"> Date</label>
@@ -90,8 +101,9 @@ class Form extends Component {
                     <label className="form-label">Cost</label>
                     <input name='cost' type="text" className="form-control" id="exampleFormControlInput1" value={this.state.cost} onChange={this.handleChange} />
                 </div>
-
+                <Link to={'/ConfirmBooking'} style={{ textDecoration: 'none' }}>
                 <input type="submit" value="Submit" className="btn btn-outline-success" />
+                </Link>
             </form>
 
         )
