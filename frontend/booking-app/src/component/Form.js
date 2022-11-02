@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 
 
 
+
+
 class Form extends Component {
     constructor(props) {
         super(props);
@@ -48,15 +50,17 @@ class Form extends Component {
     }
 
 
+    
+
+
     handleSubmit(e) {
         e.preventDefault()
         //console.log(this.state);
-
-
-
-
-
-
+    if(this.state.value !== ""){
+        alert('booking success')
+    }
+    
+      
         axios.post('http://localhost:5000/api', this.state)
             .then(res => {
                 console.log(res)
@@ -66,7 +70,10 @@ class Form extends Component {
                 console.log(error)
             })
         this.setState({ name: '', service: '', date: '', cost: '' })
+
+        
     }
+
 
     render() {
         return (
@@ -88,6 +95,7 @@ class Form extends Component {
                   onChange={this.handleDateChange}
                   name='date'
                   />
+                 
         </div>
 
              
@@ -101,9 +109,10 @@ class Form extends Component {
                     <label className="form-label">Cost</label>
                     <input name='cost' type="text" className="form-control" id="exampleFormControlInput1" value={this.state.cost} onChange={this.handleChange} />
                 </div>
-                <Link to={'/ConfirmBooking'} style={{ textDecoration: 'none' }}>
+               <Link to={'/ConfirmBooking'} style={{ textDecoration: 'none' }}>
                 <input type="submit" value="Submit" className="btn btn-outline-success" />
-                </Link>
+    </Link>
+           
             </form>
 
         )

@@ -11,15 +11,18 @@ app.use(cors());
 //handle routes and test on post man
 
 app.use('/api', require('./routes/api/bookings'))
-app.use('/api', require('./routes/api/ConfirmBooking'))
+app.use('/api', require('./routes/api/users'))
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
+  
 })
 
 
 app.listen(5000, () => {
-
+  
     console.log('Server is running successfully on port 5000');
-   });
+
+})
   
 

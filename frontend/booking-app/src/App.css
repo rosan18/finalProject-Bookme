@@ -33,6 +33,7 @@ body{
 .Btn{
  width:200px;
  border-radius: 10px;
+ margin:15px
 }
 
 .nav-item{
@@ -41,6 +42,38 @@ body{
 
 .form-label{
   color:rgb(97, 113, 154);
-  font-size: 30px;
+  font-size: 20px;
 }
+
+.form_register{
+  background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.form-control{
+  background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    
+    padding: 10px;
+}
+
+.User{
+  /* Center vertically */
+
+  align-items: center;
+  width:800px;
+  margin:auto;
+  background-color:rgb(236, 236, 244)
+}
+.Btn2{
+  width:200px;
+  border-radius: 10px;
+ margin-top:15px;
+ border-color: antiquewhite;
+}
+
 

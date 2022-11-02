@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     state = {
-        
+
 
     }
     render() {
@@ -19,36 +19,37 @@ class Navbar extends Component {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                   {/*
+                                    {/*
                                     <a class="nav-link active" aria-current="page">Home</a>*/}
-                                     <Link to='/'class="nav-link active"  >Home</Link>
+                                    <Link to='/' className="nav-link active"  >Home</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="">link</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Services
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {/*<li><a class="dropdown-item" href="#">Finance</a></li>*/}
-                                        <Link to='/Finance'class="dropdown-item">Finance
-                                        <li><a class="dropdown-item" href="">Health</a></li>
-                                       
-                                        </Link>
+                                        <Link to='/Finance' class="dropdown-item">Finance </Link>
+                                        <li><a className="dropdown-item" href="">Health</a></li>
+
+
                                     </ul>
                                 </li>
-                               
+
                             </ul>
-                            <form class="d-flex">
-                                
+                            <form className="d-flex">
+                                <Link to={"/Login"}>
                                     <button class="btn btn-light" type="submit">Log In</button>
+                                </Link>
+
                             </form>
 
                         </div>
+
                     </div>
                 </nav>
-                
+
             </div>
         );
     }
