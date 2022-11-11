@@ -16,7 +16,7 @@ const BookingSchema = new mongoose.Schema({
     },
 
      cost:{
-        type:Number,
+        type: String
         
     }
 })

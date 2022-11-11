@@ -26,10 +26,10 @@ class SignUp extends Component {
 }
   handleSubmit(e){
   e.preventDefault();
-  const { fname, lname, email, password, } =this.state;
+  //const { fname, lname, email, password, } =this.state;
   //console.log(fname,lname,email,password, )
 
-  axios.post('http://localhost:5000/routes/api/users/', this.state)
+  axios.post('http://localhost:5000/api/users', this.state)
   .then(res => {
       console.log(res)
   })

@@ -70,7 +70,7 @@ router.get('/:id', async (req, res) => {
     router.delete('/:id', async(req, res)=>{
       try {
         const bookings= await Bookings.findByIdAndRemove(req.params.id, req.body)
-        console.log(bookings)
+        res.send(bookings)
       } catch (error) {
         res.status(500).json({message:"no appointments"})
         

@@ -1,46 +1,53 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-
+import axios from 'axios';
 
 
 class ConfirmBooking extends Component {
-   constructor(){
-    super();
-    this.handleSubmit = this.handleSubmit.bind(this);
-   }
   
-   state = {} 
-
    
-  handleSubmit(e){
-    e.preventDefault();
-    
-    axios.get('http://localhost:5000/api', this.state)
-    .then(res => {
-        console.log(res)
-    })
-
-    .catch((error) => {
-        console.log(error)
-    })
-this.setState({ name: '', service: '', date: '', cost: '' })
-
-
+  
+  state = {
+    bookings: []
   }
 
-  render() { 
-  
-    return (
-      <div>
-      <form >
-        <h3>Booking review</h3>
-     
-        <input onSubmit={this.handleSubmit}  type="submit" value="confrm" className="btn btn-outline-success" />
-      </form>
+
+ 
+  componentDidMount() {
+    axios.get('http://localhost:5000/api/bookings',)
+      .then(res => {
+        (console.log(res.data))
+        this.setState({ bookings: res.data })
+
+      })
+
+      .catch((error) => {
+        console.log(error)
+      });
+}
+
+
+render() {
+  if(!this.state.bookings?.length){
+    return <div>loading...</div>
+  }
+  const lastBooking = this.state.bookings.pop();
+      return (
+      <div className='confirm'> 
+    <h3>Name:{lastBooking.name}</h3>
+    
+    <h3>Service:{lastBooking.service}</h3>
+    
+    
+    <h3>Date: {lastBooking.date}</h3>
+    
+    
+    <h3>Cost:{lastBooking.cost}</h3>
+    
+    <button >delete</button>
       </div>
-    );
+    )
   }
 }
- 
+
 export default ConfirmBooking
-;
+  ;

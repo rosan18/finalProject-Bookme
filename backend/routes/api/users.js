@@ -17,27 +17,17 @@ router.get('/test', (req, res) => res.send('user route testing!'));
 router.get('/', async (req, res) => {
     try {
        const users = await Users.find({});
-       console.log(users)
+       //console.log(users)
        console.log(error)
-        res.json(users)
+        res.send(users)
     } catch (error) {
-        console.error(error);
+        console.log(error);
         res.status(500).json({message:"no user found"})
         
     }
 });
 
-//@route GET by /:id
-router.get('/:id', async (req, res) => {
-    try {
-      const users= await Users.findById(req.params.id);
-      console.log(users)
-      res.send(users)
-    } catch (error) {
-      console.error(error);
-        res.status(500).json({message:"server failed"})
-    }
-    });
+
     
     //@route POST 
     router.post('/', async (req, res) => {
@@ -57,7 +47,7 @@ router.get('/:id', async (req, res) => {
     router.put('/:id', async (req,res) => {
       try {
         const users = await Users.findByIdAndUpdate(req.params.id, req.body);
-         console.log(users)
+         
          res.send(users)
       } catch (error) {
         res.status(500).json({message:"unable to update"})
@@ -68,7 +58,7 @@ router.get('/:id', async (req, res) => {
     router.delete('/:id', async(req, res)=>{
       try {
         const users= await Users.findByIdAndRemove(req.params.id, req.body)
-        console.log(users)
+        res.send(users)
       } catch (error) {
         res.status(500).json({message:"no user found"})
         

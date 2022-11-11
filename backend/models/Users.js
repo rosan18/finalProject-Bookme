@@ -10,7 +10,8 @@ const UserSchema = new mongoose.Schema({
     
        
     },email:{
-        type:String
+        type:String,
+        unique: true
     },
 
      password:{

@@ -1,4 +1,5 @@
-import {BrowserRouter,  Route, Routes } from "react-router-dom"
+import {  BrowserRouter,  Route, Routes,  } from "react-router-dom"
+
 import './App.css';
 import '../src/component/Navbar'
 import Navbar from '../src/component/Navbar';
@@ -8,19 +9,26 @@ import Homepage from "./component/Homepage";
 import ConfirmBooking from "./component/ConfirmBooking";
 import SignUp from "../src/component/Users/SignUp";
 import Login from "./component/Users/Login";
+
+
 function App() {
+  
   return (
     <BrowserRouter>
     <Navbar />
-    
     <Routes>
+   
+    
       <Route path="/" element={<Homepage/>} />
       <Route path="/Finance" element={<Finance />} />
-      <Route path="/Form" element={<Form />} />
-      <Route path="/ConfirmBooking" element={< ConfirmBooking/>} />
+      <Route path="/Form" element={<Form  />} />
+      <Route path="/ConfirmBooking" element={< ConfirmBooking/>}/>
       <Route path="/SignUp" element={<SignUp/>}/>
       <Route path="/Login" element={<Login/>}/>
+     
+       
          </Routes>
+      
   </BrowserRouter>
   ) 
 } 
