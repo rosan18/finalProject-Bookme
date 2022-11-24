@@ -1,64 +1,56 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { Link } from 'react-router-dom'
+import {Link } from 'react-router-dom'
 
 
 
-class Form extends Component {
-    constructor(props) {
-        super();
-        this.handleChange = this.handleChange.bind(this);
-        this.handleDateChange = this.handleDateChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.onClick=this.display.bind(this)
-        
-    }
-    state = {
-        name: "",
-        service: "finance",
-        date: new Date(),
-        cost: "3$"
-    };
-
-    styles = {
-        fontSize: 50,
-        fontWeight: "bold",
-        color: "blue"
-
-    }
+const Form = () => {
+  const [myState, setMyState]  = useState({
+    name: "",
+    service: "finance",
+    date: new Date(),
+    cost: "3$"
+});
+    
    
+
     //event to handle all inputs except datepicker
-    handleChange(e) {
+    const handleChange = name => (e)=> {
 
         const name = e.target.name;
-        const value = e.target.value;
-        //to update the input state
+       const value = e.target.value;
+        //to update the input myState
 
-        this.setState({ [name]: value });
+  setMyState
+  ({...myState, [name]: value });
 
     }
     //event to handle datepicker input
-    handleDateChange(date) {
-        //update the date state
-        this.setState({
+    const handleDateChange = (date) => {
+        //update the date myState
+setMyState
+({
             date: date
         })
     }
 
 
-    handleSubmit(e) {
-       e.preventDefault()
-        //console.log(this.state);
-        if (this.state.value !== "") {
+    const handleSubmit = (e) => {
+       e.preventDefault();
+       const { name, service, date, cost } = myState;
+       const details = { name, service, date, cost };
+        //console.log(this.myState);
+        if (details !== "") {
             alert('booking success')
         }
 
 
-        axios.post('http://localhost:5000/api/bookings', this.state)
+          axios.post('http://localhost:5000/api/bookings', details)
             .then(res => {
-             
+        setMyState
+        (res.data);
               console.log(res);
                   
             })
@@ -66,30 +58,30 @@ class Form extends Component {
             .catch((error) => {
                 console.log(error)
             })
-        this.setState({ name: '', service: '', date: '', cost: '' })
+        
 
 
     }
 
 
-    render() {
+    
         return (
 
-            <form className='form'  onSubmit={this.handleSubmit}>
-                <h2 style={this.styles}>Create appointment</h2>
+            <form className='form'  onSubmit={handleSubmit} >
+                <h2  className="headerForm">Create appointment</h2>
                 <div className="mb-3">
                     <label className="form-label">Name</label>
-                    <input name='name' type="text" className="form-control" id="exampleFormControlInput1" value={this.state.name} onChange={this.handleChange} />
+                    <input name='name' type="text" className="form-control" id="exampleFormControlInput1" value={myState.name} onChange={handleChange} />
 
                     <label className="form-label">Service</label>
-                    <input name='service' type="text" className="form-control " id="exampleFormControlInput1" value={this.state.service} onChange={this.handleChange} />
+                    <input name='service' type="text" className="form-control " id="exampleFormControlInput1" value={myState.service} onChange={handleChange} />
 
                     <label className="form-label"> Date</label>
                     <div>
                         <DatePicker
 
-                            selected={this.state.date}
-                            onChange={this.handleDateChange}
+                            selected={myState.date}
+                            onChange={handleDateChange}
                             name='date'
                         />
 
@@ -99,23 +91,21 @@ class Form extends Component {
 
 
                     {/* <label className="form-label"> Date</label>
-                    <input name='date'type="datetime-local" className="form-control" id="exampleFormControlInput1"  value={this.state.date} onChange={this.handleChange} />
+                    <input name='date'type="datetime-local" className="form-control" id="exampleFormControlInput1"  value={this.myState.date} onChange={this.handleChange} />
 
 
 */}
                     <label className="form-label">Cost</label>
-                    <input name='cost' type="text" className="form-control" id="exampleFormControlInput1" value={this.state.cost} onChange={this.handleChange} />
+                    <input name='cost' type="text" className="form-control" id="exampleFormControlInput1" value={myState.cost} onChange={handleChange} />
                 </div>
-                <div>
-               
-                
-                 <Link exact to={'/ConfirmBooking'} onClick={this.handleSubmit}>Submit</Link>
+                {/*<Link to={'/ConfirmBooking'} style={{ textDecoration: 'none' }}>*/}
+                <input type="submit" value="Submit" className="btn btn-outline-success" />
+               {/** </Link> */}
                  
-                 </div>
             </form>
 
         )
-    }
+    
 
 }
 export default Form;

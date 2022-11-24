@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-class Navbar extends Component {
-    state = {
-
-
-    }
-    render() {
+const Navbar = () => {
+    
+   
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar navbar-light ">
@@ -30,8 +27,8 @@ class Navbar extends Component {
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {/*<li><a class="dropdown-item" href="#">Finance</a></li>*/}
-                                        <Link to='/Finance' class="dropdown-item">Finance </Link>
-                                        <li><a className="dropdown-item" href="">Health</a></li>
+                                        <Link to='/Finance' className="dropdown-item">Finance </Link>
+                                        <li><a className="dropdown-item" href="#">Health</a></li>
 
 
                                     </ul>
@@ -52,7 +49,7 @@ class Navbar extends Component {
 
             </div>
         );
-    }
+    
 }
 
 export default Navbar;

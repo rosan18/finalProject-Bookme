@@ -83,3 +83,9 @@ body{
   
   align-items: center;
 }
+
+.headerForm{
+  font-size: 50;
+  font-weight:  "bold";
+  color: "blue"
+}

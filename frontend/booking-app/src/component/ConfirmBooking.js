@@ -3,6 +3,10 @@ import axios from 'axios';
 
 
 class ConfirmBooking extends Component {
+  constructor(){
+    super()
+   this.onClick=this.deleteBooking.bind(this)
+  }
   
    
   
@@ -10,9 +14,9 @@ class ConfirmBooking extends Component {
     bookings: []
   }
 
-
  
   componentDidMount() {
+    //get data from the database
     axios.get('http://localhost:5000/api/bookings',)
       .then(res => {
         (console.log(res.data))
@@ -23,10 +27,18 @@ class ConfirmBooking extends Component {
       .catch((error) => {
         console.log(error)
       });
+    
 }
+ 
+    //delete a record based on the last id
+   deleteBooking(id){
+    axios
+    .delete(`http://localhost:5000/api/bookings/'${this.state.bookings.id}`)
+  
+   .then(res => console.log('deleting data', res)).catch(err =>console.log(err))
 
-
-render() {
+  }
+   render() {
   if(!this.state.bookings?.length){
     return <div>loading...</div>
   }
@@ -43,7 +55,7 @@ render() {
     
     <h3>Cost:{lastBooking.cost}</h3>
     
-    <button >delete</button>
+    <button onClick={this.deleteBooking(lastBooking)}>delete</button>
       </div>
     )
   }

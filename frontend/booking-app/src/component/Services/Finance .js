@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Finance extends Component {
-    state = {}
-    render() {
+ const Finance = ()=> {
+    
+    
         return (
             <div className=' finance'>
                 <div className='items'>
@@ -23,7 +23,7 @@ class Finance extends Component {
 
             </div>
         );
-    }
+    
 }
 
 export default Finance;
