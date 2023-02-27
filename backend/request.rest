@@ -1,0 +1,10 @@
+GET http://localhost:5000/users
+###
+
+POST  http://localhost:5000/api/login
+Content-Type: application/json
+
+{
+    "email": "sp7@yahoo.com",
+    "password":"1234"
+}

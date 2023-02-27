@@ -89,3 +89,10 @@ body{
   font-weight:  "bold";
   color: "blue"
 }
+
+.bookings {
+  align-items: center;
+  width:800px;
+  margin:50px;
+  background-color:rgb(236, 236, 244)
+}

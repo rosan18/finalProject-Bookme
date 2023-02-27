@@ -3,21 +3,82 @@ const app = express();
 
 const cors = require('cors');
 
+const jwt = require('jsonwebtoken')
+const JWT_SECRET = 'kmkkslk27628()jjgoalkdj'
+
+const Users = require('./models/SignUp')
+const User = require('./models/Login')
+const bcrypt = require("bcrypt");
+
 const connection = require('./connection.js');
-const userRoute =require('./routes/api/users');
-const bookingsRoute = require('./routes/api/bookings')
+const SignUpRoute =require('./routes/api/signUp');
+const bookingsRoute = require('./routes/api/bookings');
+const loginRoute = require('./routes/api/login');
 app.use(express.json());
 app.use(cors());
 
 //handle routes and test on post man
 
 app.use('/api/bookings',bookingsRoute )
-app.use('/api/users', userRoute) 
+app.use('/api/signUp', SignUpRoute) 
+app.use('/api/login', loginRoute)
 
-app.get('/', (req, res) => {
+app.get('/users', (req, res) => {
   res.send('Hello World!')
   
 })
+app.post("/api/signUp", async (req, res) => {
+
+ try {
+    // hashing the password
+    //create a salt
+  const salt = await bcrypt.genSalt()
+
+  const hashedPassword = await bcrypt.hash(request.body.password, salt)
+  console.log(salt)
+  console.log(hashedPassword)
+      
+  // create a new user instance and collect the data
+      const users = await Users.create({
+        fname: request.body.fname,
+        lname:request.body.lname,
+        email: request.body.email,
+        password:hashedPassword,
+      });
+      response.send(users)
+
+    }catch (error) {
+        console.log(error)
+         response.status(500).json({message:"failed to create user"})
+    
+       }
+      
+ })
+app.post('/api/login', async (req,res) =>{
+  const { email, password } = req.body;
+  const user = User.findOne( {email});
+  if(!user) {
+    return res.json({error: 'user not found'})
+  }
+  try{
+   if(await bcrypt.compare(password, user.password)) {
+    res.send('success')
+   } else {
+     res.send('not allowed')
+   }
+   
+    }  catch{
+        res.status(500).send()
+  }
+
+ //const token = jwt.sign({}, JWT_SECRET);
+})
+
+        // catch error if the new user wasn't added successfully to the database
+       
+
+
+
 
 
 app.listen(5000, () => {
