@@ -39,12 +39,12 @@ app.post("/api/signUp", async (req, res) => {
   console.log(hashedPassword)
       
   // create a new user instance and collect the data
-      const users = await Users.create({
+      const users = {
         fname: request.body.fname,
         lname:request.body.lname,
         email: request.body.email,
         password:hashedPassword,
-      });
+      };
       response.send(users)
 
     }catch (error) {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import DatePicker from 'react-datepicker';
+
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -10,26 +11,34 @@ const Form = () => {
   const [myState, setMyState]  = useState({
     name: "",
     service: "finance",
-    date: new Date(),
+    date:new Date(),
     cost: "3$"
 });
+/**const [selectedDate, setSelectedDate] = useState({
+  date: new Date(),
+});
+*/
    //event to handle all inputs except datepicker
     const handleChange = (e)=> {
      // const { name, value} = e.target; 
       const name = e.target.name;
-      const value = e.target.value
+      const value = e.target.value;
        
         //to update the input myState
 setMyState
   ({...myState, [name]: value });
 
     }
-  const handleDateChange = (date) => {
-    setMyState({
-      ...myState,
-      date:date
-    })
-  }
+    const handleDateChange = (date) => {
+      //to update date state
+      setMyState({
+        ...myState,
+        date:date
+      });
+    }
+  
+  
+  
    const handleSubmit = (e) => {
        e.preventDefault();
       if (myState !== "") {
@@ -64,12 +73,17 @@ setMyState
                     <label className="form-label"> Date</label>
                     <div>
                     <DatePicker
+                             
                            
                              selected={myState.date}
-                             onChange={handleDateChange} 
-                             startDate = {new Date()}
+                             onChange ={handleDateChange} 
+                             dateFormat="dd-MM-yyyy"
                              minDate={new Date()}
                              filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+                            
+                             
+                             
+                       
 
                         />
 
@@ -89,3 +103,5 @@ setMyState
 
 }
 export default Form;
+
+
