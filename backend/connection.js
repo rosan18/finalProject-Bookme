@@ -4,7 +4,8 @@ const connectionParams ={
     useUnifiedTopology:true,
 };
 
-const uri =`mongodb+srv://Rosan22:Anurose18@bookme-data.8fuqtrz.mongodb.net/?retryWrites=true&w=majority`
+const uri =
+`mongodb+srv://mercyabolade20:Mercy123@mycluster.lhqis8t.mongodb.net/?retryWrites=true&w=majority`
 const connection = mongoose
 .connect(uri, connectionParams)
 .then(() => {
